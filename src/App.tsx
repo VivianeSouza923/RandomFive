@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Child from './views/Child';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+var cont2 = 0;
+
+const App: React.FC = () => {
+
+  const [cont, setCont] = useState<number>(0);
+
+  const increment = () => {
+    setCont(cont + 1);
+    cont2++;
+    console.log("cont :>>", cont);
+    console.log("cont2 :>>", cont2);
+    
+  };
+
+  const decrement = () => {
+    setCont(cont - 1);
+    cont2--;
+    console.log("cont :>>", cont);
+    console.log("cont2 :>>", cont2);
+    
+  };
+
+
+
+  return (<div>
+
+    <button onClick={increment}>Incrementar</button>
+    <h1>state cont: {cont} </h1>
+    <h1>variável cont2: {cont2} </h1>
+    <button onClick={decrement}>Decrementar</button>
+    <Child number={cont} />
+
+  </div>
+  
   );
-}
+
+
+};
 
 export default App;
